@@ -1,0 +1,46 @@
+Ref: https://es.wikipedia.org/wiki/Boeing_747
+Especificaciones para Boeing 747-100
+
+vuelos
+
+[
+    {
+        "avion": {
+            "operado_por": "Avianca",
+            "matricula": "AV8409",
+            "tipo": "Boeing 747-100",
+            "capacidad": {
+                "tripulacion": 3,
+                "economica": 270,
+                "ejecutiva": 58,
+                "turista": 0,
+                "primera_clase": 36
+            }
+        },
+        "itinerario": {
+            "duracion": "01h10m",
+            "origen": {
+                "aeropuerto": "",
+                "ciudad": "Bogotá",
+                "iata_code": "BOG"
+            },
+            "destino": {
+                "aeropuerto": "",
+                "ciudad": "Cali",
+                "iata_code": "CLO"
+            }
+        },
+        "detalle" : {
+            "fecha": "",
+            "hora": {
+                "salida": "09:03",
+                "llegada": "10:13"
+            },
+            "tarifa": {
+                "economica": "171910",
+                "ejecutiva": "249500",
+                "primera_clase": "975040"
+            }
+        }
+    },
+]

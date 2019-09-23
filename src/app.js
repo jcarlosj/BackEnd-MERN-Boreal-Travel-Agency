@@ -12,6 +12,7 @@ app .use( express .json() );                        // Analiza las solicitudes e
 // Routes
 app .use( '/api/notes', require( './routes/notes' ) );
 app .use( '/api/users', require( './routes/users' ) );
+app .use( '/api/vuelos', require( './routes/vuelos.routes' ) );
 
 // Export Modulo Express
 module .exports = app;
