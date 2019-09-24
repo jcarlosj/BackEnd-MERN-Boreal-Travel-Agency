@@ -12,7 +12,16 @@ vuelosController .getVuelos = async( request, response ) => {
 vuelosController .createVuelo = async ( request, response ) => {
     console .log( 'Enviado por el Cliente', request .body );      // Representa los datos que envia el 'cliente'
 
-    const { matricula } = request .body,
+    const { 
+        matricula, 
+        duracion, 
+        codigo_iata_origen, 
+        codigo_iata_destino,
+        aeropuerto_origen,
+        aeropuerto_destino,
+        ciudad_origen,
+        ciudad_destino, 
+    } = request .body,
         
         /** Crea Objeto con el Schema Vuelo */
         nuevoVuelo = new Vuelo ({
@@ -27,7 +36,20 @@ vuelosController .createVuelo = async ( request, response ) => {
                     turista: 0,
                     primera_clase: 36
                 }
-            }
+            },
+            itinerario: {
+                duracion,
+                origen: {
+                    aeropuerto: aeropuerto_origen,
+                    ciudad: ciudad_origen,
+                    iata_code: codigo_iata_origen
+                },
+                destino: {
+                    aeropuerto: aeropuerto_destino,
+                    ciudad: ciudad_destino,
+                    iata_code: codigo_iata_destino
+                }
+            }                
         });
 
     console .log( 'Objeto Schema Vuelo', nuevoVuelo );
@@ -65,8 +87,8 @@ vuelosController .updateVuelo = async ( request, response ) => {
 vuelosController .deleteVuelo = async ( request, response ) => {
     console .log( request .params .id );     // Recibe el parámetro ID de la URL
 
-    const Vuelo = await Vuelo .findByIdAndDelete( request .params .id );
-    console .log( Vuelo );
+    const vuelo = await Vuelo .findByIdAndDelete( request .params .id );
+    console .log( vuelo );
     response .json({ message: 'Vuelo Deleted' });
 }
 

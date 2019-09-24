@@ -51,6 +51,37 @@ const vueloSchema = new Schema({
             }
         },
         required:false
+    },
+    itinerario: {
+        duracion: String,
+        origen: {
+            aeropuerto: {
+                type: String,
+                required: true
+            },
+            ciudad: {
+                type: String,
+                required: true
+            },
+            iata_code: {
+                type: String,
+                required: true
+            }
+        },
+        destino: {
+            aeropuerto: {
+                type: String,
+                required: true
+            },
+            ciudad: {
+                type: String,
+                required: true
+            },
+            iata_code: {
+                type: String,
+                required: true
+            }
+        }
     }
 }, {
     timestamps: true        // Crea la fecha de creación y la fecha de actualización 
