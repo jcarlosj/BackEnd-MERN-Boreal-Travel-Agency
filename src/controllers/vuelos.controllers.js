@@ -12,13 +12,13 @@ vuelosController .getVuelos = async( request, response ) => {
 vuelosController .createVuelo = async ( request, response ) => {
     console .log( 'Enviado por el Cliente', request .body );      // Representa los datos que envia el 'cliente'
 
-    const { author, title, content, date } = request .body,
+    const { matricula } = request .body,
         
         /** Crea Objeto con el Schema Vuelo */
         nuevoVuelo = new Vuelo ({
             avion: {
                 operado_por: "Avianca",
-                matricula: "AV8409",
+                matricula,
                 tipo: "Boeing 747-100",
                 capacidad: {
                     tripulacion: 3,
@@ -41,9 +41,11 @@ vuelosController .createVuelo = async ( request, response ) => {
 vuelosController .getVuelo = async ( request, response ) => {
     console .log( request .params .id );     // Recibe el parámetro ID de la URL
 
-    const Vuelo = await Vuelo .findById( request .params .id );
-    console .log( Vuelo );
-    response .json( Vuelo );
+    const vuelo = await Vuelo .findById( request .params .id );
+    console .log( vuelo );
+    response .json( vuelo );
+
+    // response .json({});
 }
 
 vuelosController .updateVuelo = async ( request, response ) => {
