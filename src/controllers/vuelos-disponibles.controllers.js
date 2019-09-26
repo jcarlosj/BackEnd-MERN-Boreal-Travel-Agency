@@ -9,6 +9,31 @@ vuelosController .getVuelos = async( request, response ) => {
     response .json( vuelos );
 }
 
+vuelosController .getVuelosDisponibles = async ( request, response ) => {
+
+    const { origen, destino } = request .body;
+
+    console .log( 'Origen', origen );
+    console .log( 'Destino', destino );
+
+    // Vuelos IDA
+    const vuelosIda = await Vuelo .find({
+        'itinerario.origen.ciudad': origen,
+        'itinerario.destino.ciudad': destino,
+    });  
+
+    // Vuelos REGRESO
+    const vuelosRegreso = await Vuelo .find({
+        'itinerario.origen.ciudad': destino,
+        'itinerario.destino.ciudad': origen,
+    });  
+
+    console .log( 'IDA', vuelosIda );
+    console .log( 'REGRESO', vuelosRegreso );
+
+    response .json([ vuelosIda, vuelosRegreso ]);
+}
+
 vuelosController .getVuelo = async ( request, response ) => {
     console .log( request .params .id );     // Recibe el parámetro ID de la URL
 
