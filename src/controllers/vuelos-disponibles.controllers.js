@@ -17,21 +17,21 @@ vuelosController .getVuelosDisponibles = async ( request, response ) => {
     console .log( 'Destino', destino );
 
     // Vuelos IDA
-    const vuelosIda = await Vuelo .find({
+    const ida = await Vuelo .find({
         'itinerario.origen.ciudad': origen,
         'itinerario.destino.ciudad': destino,
     });  
 
     // Vuelos REGRESO
-    const vuelosRegreso = await Vuelo .find({
+    const regreso = await Vuelo .find({
         'itinerario.origen.ciudad': destino,
         'itinerario.destino.ciudad': origen,
     });  
 
-    console .log( 'IDA', vuelosIda );
-    console .log( 'REGRESO', vuelosRegreso );
+    console .log( 'IDA', ida );
+    console .log( 'REGRESO', regreso );
 
-    response .json([ vuelosIda, vuelosRegreso ]);
+    response .json({ ida, regreso });
 }
 
 vuelosController .getVuelo = async ( request, response ) => {
